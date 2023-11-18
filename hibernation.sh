@@ -24,7 +24,8 @@ sudo kernelstub -a "resume=UUID=$UUID resume_offset=$offset"
 
 # Add following line to file
 mkdir -p /etc/initramfs-tools/conf.d
-echo "resume=UUID=$UUID resume_offset=$offset" > /etc/initramfs-tools/conf.d/resume
+sudo touch /etc/initramfs-tools/conf.d/resume
+echo "resume=UUID=$UUID resume_offset=$offset" | sudo tee /etc/initramfs-tools/conf.d/resume
 
 # Update the configurations
 sudo update-initramfs -u
